@@ -42,7 +42,7 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect("mongodb+srv://emmadch01:lea369ch@cluster0.u0isw.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+  .connect("mongodb+srv://hassnain126:samsung713@cluster0.cstj8.mongodb.net/<dbname>?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
