@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var Product = require("../models/product");
+var {Product,validate} = require("../models/product");
 var checkSessionAuth = require("../middlewares/checkSessionAuth");
 /* GET home page. */
 router.get("/", async function (req, res, next) {
@@ -13,6 +13,8 @@ router.get("/add", checkSessionAuth, async function (req, res, next) {
 });
 // store data in db
 router.post("/add", async function (req, res, next) {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
   let product = new Product(req.body);
   await product.save();
   res.redirect("/products");
